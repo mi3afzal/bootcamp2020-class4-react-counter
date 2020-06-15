@@ -1,26 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Counter from './Counter';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	let [theme, setTheme] = useState(true);
+
+	return (
+		<div className="App">
+			<header className={`App-header ${ theme ? 'darkTheme' : 'lightTheme'}`}>
+				<Counter />
+				<br/><br/>
+				<button onClick={() => setTheme(!theme)}>Apply { !theme ? 'Dark' : 'Light'} Theme</button>
+				<h3>Counter App with Theme switch</h3>
+				<p>Auto Deployment on Surge through Github actions with custome YAML config.</p>
+
+				<p>
+					<span>Developed in React with Love by </span> 
+					<a
+					className="App-link"
+					href="https://mi3afzal.com"
+					target="_blank"
+					rel="noopener noreferrer"
+					>
+					Muhammad Irfan Afzal
+					</a>
+				</p>
+			</header>
+		</div>
+	);
 }
 
 export default App;
